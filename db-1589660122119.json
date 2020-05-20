@@ -1,0 +1,26 @@
+{
+  "mobiles": [
+    {
+      "id": 1,
+      "name": "samsung galaxy z fip",
+      "price": "116000",
+      "model_number": "",
+      "colors": [
+        "Mirror Black",
+        "Mirror Gold",
+        "Mirror Purple"
+      ],
+      "screen-size": "6.7 inch",
+      "operating-system": "Android",
+      "ram": "8gb",
+      "storage": "256gb"
+    }
+  ],
+  "login": [
+    {
+      "id": 1,
+      "username": "anmol",
+      "password": "anmol"
+    }
+  ]
+}

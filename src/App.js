@@ -1,26 +1,29 @@
+import { Component } from "react";
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './shared/header';
+import Footer from './shared/footer';
+import { Route, Switch } from 'react-router-dom';
+import ProductDetails from './products/productDetails/ProductDetails';
+import ProductList from './products/productList/ProductList';
+import PageNotFound from './shared/pageNotFound';
+// import { Component } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Header></Header>
+        <div>
+          <Switch>
+            <Route exact path='/' component={ProductList} />
+            <Route exact path='/details/:id' component={ProductDetails} />
+            <Route path='**' component={PageNotFound} />
+          </Switch>
+        </div>
+        <Footer ></Footer>
+      </div>
+    );
+  }
 }
-
 export default App;

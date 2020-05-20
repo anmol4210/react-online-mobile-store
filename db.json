@@ -1,0 +1,60 @@
+{
+  "mobiles": [
+    {
+      "id": 1,
+      "name": "Samsung Galaxy Z Flip",
+      "price": "116000",
+      "model_number": "67r78",
+      "colors": ["Mirror Black", "Mirror Gold", "Mirror Purple"],
+      "screen-size": "6.7 inch",
+      "operating-system": "Android",
+      "ram": "8gb",
+      "storage": "256gb"
+    },
+    {
+      "id": 2,
+      "name": "Motorola Razr",
+      "price": "124999",
+      "model_number": "23ed4",
+      "colors": ["Black"],
+      "screen-size": "6.2 inch",
+      "operating-system": "Android",
+      "ram": "6gb",
+      "storage": "128gb"
+    },
+    {
+      "id": 3,
+      "name": "One Plus 8",
+      "price": "40000",
+      "model_number": "897rf",
+      "colors": ["Onyx Black", "Glacial Green", "Interstellar Glow"],
+      "screen-size": "6.55 inch",
+      "operating-system": "Android",
+      "ram": "8gb",
+      "storage": "128gb"
+    },
+    {
+      "id": 4,
+      "name": "One Plus 8 Pro",
+      "price": "50000",
+      "model_number": "12df3",
+      "colors": ["Onyx Black", "Glacial Green", "Ultramarine Blue"],
+      "screen-size": "6.78 inch",
+      "operating-system": "Android",
+      "ram": "8gb",
+      "storage": "128gb"
+    },
+    {
+      "id": 5,
+      "name": "One Plus 7T",
+      "price": "35000",
+      "model_number": "4fd39",
+      "colors": ["Glacier Blue", "Frosted Silver"],
+      "screen-size": "6.55 inch",
+      "operating-system": "Android",
+      "ram": "8gb",
+      "storage": "256gb"
+    }
+  ],
+  "login": [{ "id": 1, "username": "anmol", "password": "anmol" }]
+}
