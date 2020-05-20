@@ -1,4 +1,4 @@
-import { ADD_MOBILE, DELETE_MOBILE, GET_ALL_MOBILES, GET_MOBILES_BY_ID } from '../actions/action'
+import { ADD_MOBILE, DELETE_MOBILE, GET_ALL_MOBILES, GET_MOBILE_BY_ID } from '../actions/action'
 // let all_mobiles = []
 function mobiles(state = [], action) {
     let mobiles = []
@@ -9,7 +9,7 @@ function mobiles(state = [], action) {
             state = action.data
             // all_mobiles = action.data
             return action.data;
-        case GET_MOBILES_BY_ID:
+        case GET_MOBILE_BY_ID:
             // state = action.data
             return action.data
         case ADD_MOBILE:

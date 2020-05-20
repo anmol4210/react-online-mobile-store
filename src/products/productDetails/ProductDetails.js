@@ -1,9 +1,9 @@
 import { Component } from "react";
 import React from 'react';
-// import { bindActionCreators } from 'redux';
-// import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import { connect } from "react-redux";
 // import { Link } from 'react-router-dom';
-// import { getMobileById } from '../../actions/action'
+import { addMobileById } from '../../actions/action'
 
 // import './productDetails.css'
 // const productDetails = (props) => {
@@ -26,6 +26,12 @@ class ProductDetails extends Component {
         super(props);
         this.state.id = props.match.params.id
     }
+
+    addToCart(mobile) {
+        // console.log("props", this.props)
+        this.props.dispatch(addMobileById(mobile))
+
+    }
     componentDidMount() {
         const requestOptions = {
             method: 'GET',
@@ -38,9 +44,7 @@ class ProductDetails extends Component {
             .then(response => response.json())
             .then(data => {
                 this.setState({ "data": data })
-                // this.state.data = data
-                // console.log(data)
-                // console.log(this.state)
+
 
             })
     }
@@ -105,6 +109,8 @@ class ProductDetails extends Component {
 
                     </ul>
 
+                    <button className="btn btn-dark mt-2" onClick={() => this.addToCart(this.state.data)}>Add To Cart</button>
+
                 </div>
                 <div className="col-sm-4"></div>
             </div>
@@ -116,11 +122,11 @@ class ProductDetails extends Component {
 //     return { mobile: state.mobiles }
 // }
 
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({ getMobileById }, dispatch)
-// }
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ addMobileById }, dispatch)
+}
 
 
-// export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);
+export default connect(mapDispatchToProps)(ProductDetails);
 
-export default ProductDetails
+// export default ProductDetails

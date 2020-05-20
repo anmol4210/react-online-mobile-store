@@ -1,7 +1,7 @@
 export const ADD_MOBILE = "ADD_MOBILE"
 export const DELETE_MOBILE = "DELETE_MOBILE"
 export const GET_ALL_MOBILES = "GET_MOBILES"
-export const GET_MOBILES_BY_ID = "GET_MOBILES_BY_ID"
+export const GET_MOBILE_BY_ID = "GET_MOBILE_BY_ID"
 
 
 const apiUrl = 'http://localhost:3000/mobiles';
@@ -38,7 +38,7 @@ export const mobile = (data) => {
     // console.log(data)
     return {
 
-        type: GET_MOBILES_BY_ID,
+        type: GET_MOBILE_BY_ID,
         data
     }
 };
