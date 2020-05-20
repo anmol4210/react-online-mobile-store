@@ -22,7 +22,7 @@
   background-color: #1d1414;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  right: 40%;
+  right: 30%;
 }
 
 .dropdown-content p {
@@ -41,10 +41,10 @@
 .pointer {
   cursor: pointer;
 }
-.dropdown:hover .dropdown-content {
+.dropbtn:hover .dropdown-content {
   display: block;
 }
 
-.dropdown:hover .dropbtn {
+.dropbtn:hover {
   background-color: rgb(73, 75, 74);
 }

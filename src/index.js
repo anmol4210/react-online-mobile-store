@@ -9,11 +9,11 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/reducer';
-import { fetchMobilesData } from './actions/action';
+import { getMobiles } from './actions/action';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-store.dispatch(fetchMobilesData());
+store.dispatch(getMobiles());
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,5 +1,9 @@
 import { Component } from "react";
 import React from 'react';
+// import { bindActionCreators } from 'redux';
+// import { connect } from "react-redux";
+// import { Link } from 'react-router-dom';
+// import { getMobileById } from '../../actions/action'
 
 // import './productDetails.css'
 // const productDetails = (props) => {
@@ -23,7 +27,6 @@ class ProductDetails extends Component {
         this.state.id = props.match.params.id
     }
     componentDidMount() {
-        // console.log(this.props)
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
@@ -109,6 +112,15 @@ class ProductDetails extends Component {
     }
 }
 
-export default ProductDetails;
+// function mapStateToProps(state) {
+//     return { mobile: state.mobiles }
+// }
 
-// export default productDetails
+// function mapDispatchToProps(dispatch) {
+//     return bindActionCreators({ getMobileById }, dispatch)
+// }
+
+
+// export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);
+
+export default ProductDetails
