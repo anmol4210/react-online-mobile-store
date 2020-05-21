@@ -76,10 +76,25 @@ export function removeMobileById(mobile) {
     return action;
 }
 
-export function removeAllMobiles(mobile) {
-    const action = {
+export function removeAllMobiles(data = []) {
+    return {
         type: DELETE_ALL_MOBILES,
-        mobile: mobile
+        data
     }
-    return action;
+
 }
+
+// export const removeAllMobiles = (page_number = 0, limit = 3) => {
+//     return (dispatch) => {
+//         var url = apiUrl + `?_page=${page_number}&_limit=${limit}`
+//         return fetch(url, requestOptions)
+//             .then(response => response.json())
+//             .then(data => {
+//                 console.log(data)
+//                 dispatch(removeAllMobiles(data))
+//             })
+//             .catch(error => {
+//                 throw (error);
+//             });
+//     };
+// };

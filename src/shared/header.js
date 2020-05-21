@@ -7,6 +7,7 @@ const Header = () => {
     let [loggedIn,setLoginStatus] = useState(false)
 
     useEffect(()=>{
+        console.log("header use effect")
         // console.log(name)
         if(name.username.username!==""){
             setLoginStatus(true)

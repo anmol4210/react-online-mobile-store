@@ -20,6 +20,11 @@ function mobiles(state = [], action) {
         case DELETE_MOBILE:
             mobiles = [...state, action.mobile]
             return mobiles
+        // case DELETE_ALL_MOBILES:
+        //     console.log(action.data)
+        //     state = action.data
+        //     return action.data;
+
         default:
             return state
     }

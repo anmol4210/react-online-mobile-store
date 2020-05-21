@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './cart.css'
 import { bindActionCreators } from 'redux';
 import { connect } from "react-redux";
 // import { Link } from 'react-router-dom';
-import { addMobileById, removeMobileById } from '../actions/action'
+import { LoginContext } from '../App'
+import { addMobileById, removeMobileById, removeAllMobiles, getMobiles } from '../actions/action'
 // import { Icon } from 'react-native-elements'
+
 const Cart = (props) => {
+
+    const name = useContext(LoginContext)
     var [mobiles, setMobiles] = useState(props.cart);
 
     useEffect(() => {
-        // console.log("use effect")
+        console.log("use effect cart")
         // console.log(mobiles)
         setMobiles(props.cart);
         // console.log(props.cart)
@@ -33,9 +37,23 @@ const Cart = (props) => {
         // console.log(inputBox.value)
         // console.log(value)
     }
+
+
+
+
     const placeOrder = () => {
-        props.cart = []
+        console.log("placing order")
+        props.removeAllMobiles()
+        // console.log("order placed")
+        props.getMobiles()
         props.history.push('/')
+    }
+    let placeOrderBtn = {}
+    if (name.username.username !== "") {
+        placeOrderBtn = <button className="btn btn-dark" onClick={placeOrder}> Place Order</button>
+    }
+    else {
+        placeOrderBtn = <h3>Login to place order</h3>
     }
 
     const decrementCount = (mobile) => {
@@ -48,6 +66,7 @@ const Cart = (props) => {
         else {
             // mobile.count = 2
             props.removeMobileById(mobile)
+
         }
         inputBox.value = mobile.count
         console.log(mobile)
@@ -58,7 +77,7 @@ const Cart = (props) => {
         <div className="row">
             <div className="col-sm-4"></div>
 
-            <div className="text-dark col-sm-4 m-3">
+            <div className="text-dark col-sm-4">
                 {mobiles.map(mobile => {
                     return (
                         <div className="card m-2 mr-5" key={mobile.id}>
@@ -92,7 +111,9 @@ const Cart = (props) => {
                 }
             </div>
 
-            <div className="col-sm-4"><button className="btn btn-dark" onClick={placeOrder}> Place Order</button></div>
+            <div className="col-sm-4">
+                {placeOrderBtn}
+            </div>
         </div>
 
     </div>)
@@ -103,7 +124,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ removeMobileById, addMobileById }, dispatch)
+    return bindActionCreators({ removeMobileById, addMobileById, removeAllMobiles, getMobiles }, dispatch)
 }
 
 

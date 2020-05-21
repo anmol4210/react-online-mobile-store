@@ -13,7 +13,7 @@ const ProductList = (props) => {
     // console.log("hello")
 
     useEffect(() => {
-        // console.log("use effect")
+        console.log("use effect")
         setMobiles(props.mobiles);
     }, [props.mobiles]);
 
