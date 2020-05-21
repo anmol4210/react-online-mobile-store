@@ -8,7 +8,8 @@ import { addMobileById, getMobiles } from '../../actions/action'
 
 
 const ProductList = (props) => {
-    var [mobiles, setMobiles] = useState(props.mobiles);
+    let [mobiles, setMobiles] = useState(props.mobiles);
+    // let [cart, setCart] = useState(props.cart);
     // console.log("hello")
 
     useEffect(() => {
@@ -16,14 +17,28 @@ const ProductList = (props) => {
         setMobiles(props.mobiles);
     }, [props.mobiles]);
 
+    // useEffect(() => {
+    //     // console.log("use effect")
+    //     setCart(props.cart);
+    //     console.log("cart", props.cart)
+    // }, [props.cart]);
+
     const nextPage = (event) => {
 
         props.getMobiles(event.target.id)
+
+        // let filtered_mobile = props.mobiles.filter((mob) => {
+        //     return cart.indexOf(mob) === -1;
+        // });
+        // console.log("filtered", filtered_mobile)
+        // setMobiles(filtered_mobile)
+
 
     }
     const addToCart = (mobile) => {
         // console.log(mobile)
         props.addMobileById(mobile)
+
 
     }
     const handleFormChange = (event) => {

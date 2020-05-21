@@ -8,22 +8,40 @@ import ProductDetails from './products/productDetails/ProductDetails';
 import ProductList from './products/productList/ProductList';
 import PageNotFound from './shared/pageNotFound';
 import Cart from './cart/cart'
+import Login from './login/login'
 // import { Component } from 'react'
+export const LoginContext = React.createContext();
 
 class App extends Component {
+
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: ""
+    };
+  }
+
+  updateValue = (key, val) => {
+    this.setState({ [key]: val });
+  }
+
   render() {
     return (
       <div className="App">
-        <Header></Header>
-        <div>
-          <Switch>
-            <Route exact path='/' component={ProductList} />
-            <Route exact path='/details/:id' component={ProductDetails} />
-            <Route exact path='/cart' component={Cart} />
-            <Route path='**' component={PageNotFound} />
-          </Switch>
-        </div>
-        <Footer ></Footer>
+        <LoginContext.Provider value={{ username: this.state, updateValue: this.updateValue }}>
+          <Header></Header>
+          <div>
+            <Switch>
+              <Route exact path='/' component={ProductList} />
+              <Route exact path='/details/:id' component={ProductDetails} />
+              <Route exact path='/cart' component={Cart} />
+              <Route exact path='/login' component={Login} />
+              <Route path='**' component={PageNotFound} />
+            </Switch>
+          </div>
+          <Footer ></Footer>
+        </LoginContext.Provider>
       </div>
     );
   }

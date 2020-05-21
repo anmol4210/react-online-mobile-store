@@ -2,7 +2,7 @@ export const ADD_MOBILE = "ADD_MOBILE"
 export const DELETE_MOBILE = "DELETE_MOBILE"
 export const GET_ALL_MOBILES = "GET_MOBILES"
 export const GET_MOBILE_BY_ID = "GET_MOBILE_BY_ID"
-
+export const DELETE_ALL_MOBILES = "DELETE_ALL_MOBILES"
 
 const apiUrl = 'http://localhost:3000/mobiles';
 const requestOptions = {
@@ -72,6 +72,14 @@ export function removeMobileById(mobile) {
     const action = {
         type: DELETE_MOBILE,
         mobile
+    }
+    return action;
+}
+
+export function removeAllMobiles(mobile) {
+    const action = {
+        type: DELETE_ALL_MOBILES,
+        mobile: mobile
     }
     return action;
 }

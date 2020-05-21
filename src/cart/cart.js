@@ -9,10 +9,10 @@ const Cart = (props) => {
     var [mobiles, setMobiles] = useState(props.cart);
 
     useEffect(() => {
-        console.log("use effect")
+        // console.log("use effect")
         // console.log(mobiles)
         setMobiles(props.cart);
-        console.log(props.cart)
+        // console.log(props.cart)
     }, [props.cart]);
 
 
@@ -32,6 +32,10 @@ const Cart = (props) => {
         // console.log(mobile)
         // console.log(inputBox.value)
         // console.log(value)
+    }
+    const placeOrder = () => {
+        props.cart = []
+        props.history.push('/')
     }
 
     const decrementCount = (mobile) => {
@@ -58,7 +62,6 @@ const Cart = (props) => {
                 {mobiles.map(mobile => {
                     return (
                         <div className="card m-2 mr-5" key={mobile.id}>
-
                             <div className="card-body">
                                 <h4 className="card-title">{mobile.name}</h4>
                                 <p className="card-text">
@@ -67,40 +70,29 @@ const Cart = (props) => {
                                 <div className="row">
                                     <div className="col-sm-3"></div>
                                     <div className="col-sm-6 input-group">
-
-
                                         <div className="input-group-prepend">
                                             <button className="input-group-text" onClick={() => incrementCount(mobile)}>
                                                 <i className="material-icons">add</i>
                                             </button>
                                         </div>
-                                        <input type="text" id={mobile.id} readOnly="True" className="bg-white text-center form-control" value="1"></input>
+                                        <input type="text" id={mobile.id} readOnly="True" className="bg-white text-center form-control" value={(mobile.count === undefined) ? 1 : mobile.count}></input>
 
                                         <div className="input-group-append">
                                             <button className="input-group-text" onClick={() => decrementCount(mobile)}>
                                                 <i className="material-icons">remove</i>
                                             </button>
                                         </div>
-
-
-
-
                                     </div>
                                     <div className="col-sm-3"></div>
                                 </div>
-
-
                             </div>
-
-
-
                         </div>)
                 })
 
                 }
             </div>
 
-            <div className="col-sm-4"></div>
+            <div className="col-sm-4"><button className="btn btn-dark" onClick={placeOrder}> Place Order</button></div>
         </div>
 
     </div>)

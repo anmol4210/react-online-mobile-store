@@ -109,10 +109,10 @@ class ProductDetails extends Component {
 
                     </ul>
 
-                    <button className="btn btn-dark mt-2" onClick={() => this.addToCart(this.state.data)}>Add To Cart</button>
+
 
                 </div>
-                <div className="col-sm-4"></div>
+                <div className="col-sm-4">  <button className="btn btn-dark mt-2" onClick={() => this.addToCart(this.state.data)}>Add To Cart</button></div>
             </div>
         )
     }
