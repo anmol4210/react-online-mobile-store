@@ -4,7 +4,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from "react-redux";
 // import { Link } from 'react-router-dom';
 import { addMobileById } from '../../actions/action'
-
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+import { ToastsStore } from 'react-toasts';
+// ToastsStore.success(`Order placed Successfully with ID: ${orderId}`)
 // import './productDetails.css'
 // const productDetails = (props) => {
 //     let id = props.match.params.id
@@ -22,14 +25,29 @@ class ProductDetails extends Component {
         data: []
     };
 
+
+
     constructor(props) {
         super(props);
         this.state.id = props.match.params.id
+
     }
 
     addToCart(mobile) {
         // console.log("props", this.props)
-        this.props.dispatch(addMobileById(mobile))
+        let obj = this.props.dispatch(addMobileById(mobile))
+        console.log(obj.mobile)
+        if (obj.mobile) {
+            ToastsStore.success("Product added to cart")
+            // toast("Product added to cart");
+        }
+        else {
+            ToastsStore.success("Unable to add product")
+            // toast("Unable to add product");
+        }
+
+        this.props.history.push('/')
+
 
     }
     componentDidMount() {
@@ -51,9 +69,10 @@ class ProductDetails extends Component {
     render() {
         return (
             <div className="row">
-                <div className="col-sm-4"></div>
-                <div className="col-sm-4">
 
+                <div className="col-sm-4">
+                </div>
+                <div className="col-sm-4">
                     <ul className="list-group">
                         <li className="list-group-item mt-2">
                             <div className="row">
@@ -67,7 +86,6 @@ class ProductDetails extends Component {
                                 <div className="col-sm-4">Price:</div>
                                 <div className="col-sm-8">{this.state.data.price}</div>
                             </div>
-
                         </li>
 
                         <li className="list-group-item mt">
@@ -82,7 +100,6 @@ class ProductDetails extends Component {
                                 <div className="col-sm-4">Screen Size:</div>
                                 <div className="col-sm-8">{this.state.data['screen-size']}</div>
                             </div>
-
                         </li>
 
                         <li className="list-group-item mt">
@@ -104,13 +121,8 @@ class ProductDetails extends Component {
                                 <div className="col-sm-4">Storage:</div>
                                 <div className="col-sm-8">{this.state.data.storage}</div>
                             </div>
-
                         </li>
-
                     </ul>
-
-
-
                 </div>
                 <div className="col-sm-4">  <button className="btn btn-dark mt-2" onClick={() => this.addToCart(this.state.data)}>Add To Cart</button></div>
             </div>

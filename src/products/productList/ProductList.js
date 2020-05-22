@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { addMobileById, getMobiles } from '../../actions/action'
 
+// import { ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toasts';
+import { ToastsStore } from 'react-toasts';
+// ToastsStore.success(`Order placed Successfully with ID: ${orderId}`)
 
 
 const ProductList = (props) => {
@@ -13,7 +16,7 @@ const ProductList = (props) => {
     // console.log("hello")
 
     useEffect(() => {
-        console.log("use effect")
+        // console.log("use effect")
         setMobiles(props.mobiles);
     }, [props.mobiles]);
 
@@ -37,7 +40,16 @@ const ProductList = (props) => {
     }
     const addToCart = (mobile) => {
         // console.log(mobile)
-        props.addMobileById(mobile)
+        let obj = props.addMobileById(mobile)
+        console.log(obj.mobile)
+        if (obj) {
+            ToastsStore.success("Product added to cart")
+            // toast("Product added to cart");
+        }
+        else {
+            ToastsStore.success("Unable to add product")
+            // toast("Unable to add product");
+        }
 
 
     }
@@ -68,6 +80,7 @@ const ProductList = (props) => {
         // (mobiles)
     }
     let header = (<div className="row navbar navbar-light bg-light">
+
         <div className="col-sm-4"></div>
         <div className="col-sm-4">
             <input className="form-control " type="text" onChange={handleFormChange} placeholder="Search" />
@@ -116,6 +129,7 @@ const ProductList = (props) => {
             <div>
                 {header}
                 <div className="row">
+
                     <div className="col-sm-4"></div>
                     <div className="text-dark col-sm-4  m-3">
                         {mobiles.map(mobile => {

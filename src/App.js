@@ -9,6 +9,8 @@ import ProductList from './products/productList/ProductList';
 import PageNotFound from './shared/pageNotFound';
 import Cart from './cart/cart'
 import Login from './login/login'
+import { ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toasts';
+
 // import { Component } from 'react'
 export const LoginContext = React.createContext();
 
@@ -23,12 +25,14 @@ class App extends Component {
   }
 
   updateValue = (key, val) => {
+    // console.log("username", key, val)
     this.setState({ [key]: val });
   }
 
   render() {
     return (
       <div className="App">
+        <ToastsContainer store={ToastsStore} position={ToastsContainerPosition.TOP_RIGHT} />
         <LoginContext.Provider value={{ username: this.state, updateValue: this.updateValue }}>
           <Header></Header>
           <div>

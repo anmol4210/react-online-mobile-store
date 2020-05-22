@@ -1,36 +1,38 @@
-import React, { useState ,useContext,useEffect} from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './shared.css'
 import { LoginContext } from '../App'
 const Header = () => {
     const name = useContext(LoginContext)
-    let [loggedIn,setLoginStatus] = useState(false)
+    let [loggedIn, setLoginStatus] = useState(false)
 
-    useEffect(()=>{
-        console.log("header use effect")
+    useEffect(() => {
+        // console.log("header use effect")
         // console.log(name)
-        if(name.username.username!==""){
+        if (name.username.username && (name.username.username !== "")) {
+            // console.log("header", name.username.username)
             setLoginStatus(true)
         }
-        else{
+        else {
             setLoginStatus(false)
         }
-    },[name])
-    
+    }, [name])
+
     var divStyle = {
         background: 'black'
     };
 
     const logout = () => {
-        console.log("logout")
-        name.updateValue('username',"");
+        // console.log("logout")
+        name.updateValue('username', "");
     }
     let loginBtn = {}
     if (loggedIn) {
+        // console.log(name)
         loginBtn = (<div className="dropdown col-sm-2 m-2">
-            <button className="dropbtn">Username
-            
-                        <div className="dropdown-content">
+            <button className="dropbtn">{name.username.username.toUpperCase()}
+
+                <div className="dropdown-content">
                     <p onClick={logout}>Logout</p>
 
 

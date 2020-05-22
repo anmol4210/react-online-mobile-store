@@ -1,30 +1,27 @@
 import React, { useState, useEffect, useContext } from 'react';
-import './cart.css'
 import { bindActionCreators } from 'redux';
 import { connect } from "react-redux";
-// import { Link } from 'react-router-dom';
 import { LoginContext } from '../App'
-import { addMobileById, removeMobileById, removeAllMobiles, getMobiles } from '../actions/action'
-// import { Icon } from 'react-native-elements'
-
+import { removeMobileById, removeAllMobiles, getMobiles } from '../actions/action'
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+import { ToastsStore } from 'react-toasts';
+// import { useToasts } from 'react-toast-notifications'
 const Cart = (props) => {
 
+    // const { addToast } = useToasts()
     const name = useContext(LoginContext)
     var [mobiles, setMobiles] = useState(props.cart);
 
     useEffect(() => {
-        console.log("use effect cart")
-        // console.log(mobiles)
         setMobiles(props.cart);
-        // console.log(props.cart)
+
     }, [props.cart]);
 
 
     const incrementCount = (mobile) => {
-        // console.log(event)
-        // let { name, value } = event.target
         let inputBox = document.getElementById(mobile.id)
-        // let mob = mobile
+
         if (mobile.count) {
             mobile.count = mobile.count + 1
 
@@ -33,23 +30,30 @@ const Cart = (props) => {
             mobile.count = 2
         }
         inputBox.value = mobile.count
-        // console.log(mobile)
-        // console.log(inputBox.value)
-        // console.log(value)
+
     }
 
 
 
 
     const placeOrder = () => {
-        console.log("placing order")
         props.removeAllMobiles()
-        // console.log("order placed")
         props.getMobiles()
+        let orderId = Math.floor(Math.random() * 10000)
+        // toast(`Order placed Successfully with ID: ${orderId}`);
+        ToastsStore.success(`Order placed Successfully with ID: ${orderId}`)
+        // addToast(`Order placed Successfully with ID: ${orderId}`, {
+        //     appearance: 'success',
+        //     autoDismiss: true,
+        // })
         props.history.push('/')
     }
+
     let placeOrderBtn = {}
-    if (name.username.username !== "") {
+    if (mobiles.length === 0) {
+        placeOrderBtn = <h3>Add Products to cart place order</h3>
+    }
+    else if (name.username.username !== "") {
         placeOrderBtn = <button className="btn btn-dark" onClick={placeOrder}> Place Order</button>
     }
     else {
@@ -69,13 +73,16 @@ const Cart = (props) => {
 
         }
         inputBox.value = mobile.count
-        console.log(mobile)
+        // console.log(mobile)
     }
 
     return (<div>
 
         <div className="row">
-            <div className="col-sm-4"></div>
+
+            <div className="col-sm-4">
+
+            </div>
 
             <div className="text-dark col-sm-4">
                 {mobiles.map(mobile => {
@@ -124,7 +131,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ removeMobileById, addMobileById, removeAllMobiles, getMobiles }, dispatch)
+    return bindActionCreators({ removeMobileById, removeAllMobiles, getMobiles }, dispatch)
 }
 
 
