@@ -46,7 +46,7 @@ const Cart = (props) => {
     if (mobiles.length === 0) {
         placeOrderBtn = <h3>Cart is Empty!</h3>
     }
-    else if (name.username.username !== "") {
+    else if (name.username.username && (name.username.username !== "")) {
         placeOrderBtn = <button className="btn btn-dark m-2" onClick={placeOrder}> Place Order</button>
     }
     else {

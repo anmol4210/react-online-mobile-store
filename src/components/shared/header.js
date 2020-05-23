@@ -36,9 +36,9 @@ const Header = () => {
     if (loggedIn) {
         // console.log("logged in")
         loginBtn = (<div className="dropdown col-sm-2 float-right">
-            <button className="dropbtn">Hi {name.username.username.toUpperCase()}!
+            <button className="dropbtn-header">Hi {name.username.username.toUpperCase()}!
 
-                <div className="dropdown-content">
+                <div className="dropdown-content-header">
                     <p onClick={logout}>Logout</p>
 
 
@@ -52,7 +52,7 @@ const Header = () => {
         loginBtn = <div className="col-sm-2 float-right">
 
             <button className="btn" style={divStyle}>
-                <Link className="text-white" to={{ pathname: '/login' }}>Login</Link>
+                <Link className="text-white" to='/login'>Login</Link>
 
             </button>
         </div>

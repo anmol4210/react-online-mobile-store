@@ -26,8 +26,8 @@ class App extends Component {
   }
 
   updateValue = (key, val) => {
-    // console.log("username", key, val)
     this.setState({ [key]: val });
+
   }
 
   render() {
@@ -45,6 +45,7 @@ class App extends Component {
               <Route exact path='/login' component={Login} />
               <Route path='**' component={PageNotFound} />
             </Switch>
+
 
           </div>
           <Footer></Footer>
