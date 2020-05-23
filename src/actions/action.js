@@ -49,7 +49,7 @@ export const getMobileById = (id) => {
         return fetch(url, requestOptions)
             .then(response => response.json())
             .then(data => {
-                console.log("getting mobile action", data)
+                // console.log("getting mobile action", data)
                 dispatch(mobile(data))
             })
             .catch(error => {

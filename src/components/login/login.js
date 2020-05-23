@@ -1,21 +1,14 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form"
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-// import './login.css';
 import { ToastsStore } from 'react-toasts';
-// ToastsStore.success(`Order placed Successfully with ID: ${orderId}`)
-
-import { LoginContext } from '../App'
+import { LoginContext } from '../../App'
 
 const Login = (props) => {
     const { register, handleSubmit } = useForm()
     const name = useContext(LoginContext)
-    // console.log("context", name)
+
     const verifyUser = (data) => {
 
-        // event.preventDefault()
-        // console.log(data)
 
         const requestOptions = {
             method: 'GET',
@@ -27,27 +20,21 @@ const Login = (props) => {
         fetch(apiUrl, requestOptions)
             .then(response => response.json())
             .then(data => {
-                // console.log(data[0])
+
                 if (data.length > 0) {
-                    // console.log("login", data[0].username)
+
                     name.updateValue('username', data[0].username);
                     ToastsStore.success("Loged In Successfully")
                     localStorage.setItem("username", data[0].username)
-                    // toast("Loged In Successfully");
+
                     props.history.push('/')
                 }
                 else {
                     ToastsStore.success("Username or password is incorrect")
-                    // toast("Username or password is incorrect");
-                    // props.history.push('/login')
+
                 }
             })
 
-
-
-
-        // console.log(form)
-        // console.log(this.ref.username.value)
     }
     return <div className="text-dark">
 

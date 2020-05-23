@@ -2,7 +2,7 @@ import { Component } from "react";
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from "react-redux";
-import { addMobileById } from '../../actions/action'
+import { addMobileById } from '../../../actions/action'
 import { ToastsStore } from 'react-toasts';
 
 

@@ -54,6 +54,28 @@
       "operating-system": "Android",
       "ram": "8gb",
       "storage": "256gb"
+    },
+    {
+      "id": 6,
+      "name": "IPhone 11",
+      "price": "73600",
+      "model_number": "3er458",
+      "colors": ["Blue", "Green", "Yellow"],
+      "screen-size": "6.1 inch",
+      "operating-system": "IoS",
+      "ram": "8gb",
+      "storage": "128gb"
+    },
+    {
+      "id": 7,
+      "name": "IPhone XR",
+      "price": "52500",
+      "model_number": "yt5643",
+      "colors": ["White", "Green", "Yellow"],
+      "screen-size": "6.1 inch",
+      "operating-system": "IoS",
+      "ram": "8gb",
+      "storage": "64gb"
     }
   ],
   "login": [

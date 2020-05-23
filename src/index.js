@@ -10,8 +10,12 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/reducer';
 import { getMobiles } from './actions/action';
+import { composeWithDevTools } from "redux-devtools-extension";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const middleware = [
+  thunk,
+];
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middleware)));
 
 store.dispatch(getMobiles());
 

@@ -1,17 +1,18 @@
 import { Component } from "react";
 import React from 'react';
 import './App.css';
-import Header from './shared/header';
-import Footer from './shared/footer';
+import Header from './components/shared/header';
+import Footer from './components/shared/footer';
 import { Route, Switch } from 'react-router-dom';
-import ProductDetails from './products/productDetails/ProductDetails';
-import ProductList from './products/productList/ProductList';
-import PageNotFound from './shared/pageNotFound';
-import Cart from './cart/cart'
-import Login from './login/login'
+import ProductDetails from './components/products/productDetails/ProductDetails';
+import ProductList from './components/products/productList/ProductList';
+import PageNotFound from './components/shared/pageNotFound';
+import Cart from './components/cart/cart'
+import Login from './components/login/login'
 import { ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toasts';
 
-// import { Component } from 'react'
+
+
 export const LoginContext = React.createContext();
 
 class App extends Component {
@@ -36,6 +37,7 @@ class App extends Component {
         <LoginContext.Provider value={{ username: this.state, updateValue: this.updateValue }}>
           <Header></Header>
           <div>
+
             <Switch>
               <Route exact path='/' component={ProductList} />
               <Route exact path='/details/:id' component={ProductDetails} />
@@ -43,8 +45,9 @@ class App extends Component {
               <Route exact path='/login' component={Login} />
               <Route path='**' component={PageNotFound} />
             </Switch>
+
           </div>
-          <Footer ></Footer>
+          <Footer></Footer>
         </LoginContext.Provider>
       </div>
     );

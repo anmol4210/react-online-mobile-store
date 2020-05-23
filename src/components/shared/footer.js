@@ -1,7 +1,7 @@
 import React from 'react';
 
-const footer = () => {
+const Footer = () => {
     return <div className="bg-dark text-white footer ">Created by: Anmol Narang</div>
 }
 
-export default footer
+export default Footer

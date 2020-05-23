@@ -1,15 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from "react-redux";
-import { LoginContext } from '../App'
-import { removeMobileById, removeAllMobiles, getMobiles } from '../actions/action'
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { LoginContext } from '../../App'
+import { removeMobileById, removeAllMobiles, getMobiles } from '../../actions/action'
 import { ToastsStore } from 'react-toasts';
-// import { useToasts } from 'react-toast-notifications'
+
 const Cart = (props) => {
 
-    // const { addToast } = useToasts()
     const name = useContext(LoginContext)
     var [mobiles, setMobiles] = useState(props.cart);
 
@@ -40,12 +37,8 @@ const Cart = (props) => {
         props.removeAllMobiles()
         props.getMobiles()
         let orderId = Math.floor(Math.random() * 10000)
-        // toast(`Order placed Successfully with ID: ${orderId}`);
         ToastsStore.success(`Order placed Successfully with ID: ${orderId}`)
-        // addToast(`Order placed Successfully with ID: ${orderId}`, {
-        //     appearance: 'success',
-        //     autoDismiss: true,
-        // })
+
         props.history.push('/')
     }
 
@@ -68,12 +61,11 @@ const Cart = (props) => {
 
         }
         else {
-            // mobile.count = 2
             props.removeMobileById(mobile)
 
         }
         inputBox.value = mobile.count
-        // console.log(mobile)
+
     }
 
     return (<div>

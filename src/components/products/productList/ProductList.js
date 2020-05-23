@@ -3,15 +3,15 @@ import './productList.css'
 import { bindActionCreators } from 'redux';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { addMobileById, getMobiles } from '../../actions/action'
+import { addMobileById, getMobiles } from '../../../actions/action'
 import { ToastsStore } from 'react-toasts';
 
 
 const ProductList = (props) => {
     let [mobiles, setMobiles] = useState(props.mobiles);
     let [pageNumber, setPageNumber] = useState(1)
-
-
+    let minPageNumber = 1
+    let maxPageNumber = 3
     useEffect(() => {
 
         setMobiles(props.mobiles);
@@ -46,24 +46,22 @@ const ProductList = (props) => {
             obj.classList.add("disabled")
 
         }
-
+        console.log(id)
         obj = document.getElementById("prev").parentElement
         obj.classList.remove("disabled")
         obj = document.getElementById("next").parentElement
         obj.classList.remove("disabled")
-        if (id === "1") {
+
+        if (id == minPageNumber) {
             obj = document.getElementById("prev").parentElement
             obj.classList.add("disabled")
         }
-        else if (id === "2") {
+        else if (id == maxPageNumber) {
             obj = document.getElementById("next").parentElement
             obj.classList.add("disabled")
         }
 
         setPageNumber(id)
-
-
-
     }
     const addToCart = (mobile) => {
         let obj = props.addMobileById(mobile)
@@ -149,6 +147,9 @@ const ProductList = (props) => {
                     </li>
                     <li className="page-item">
                         <div className="page-link pointer" onClick={nextPage} id="2">2</div>
+                    </li>
+                    <li className="page-item">
+                        <div className="page-link pointer" onClick={nextPage} id="3">3</div>
                     </li>
 
                     <li className="page-item">
