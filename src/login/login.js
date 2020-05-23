@@ -32,6 +32,7 @@ const Login = (props) => {
                     // console.log("login", data[0].username)
                     name.updateValue('username', data[0].username);
                     ToastsStore.success("Loged In Successfully")
+                    localStorage.setItem("username", data[0].username)
                     // toast("Loged In Successfully");
                     props.history.push('/')
                 }

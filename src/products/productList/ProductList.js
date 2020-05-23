@@ -4,55 +4,89 @@ import { bindActionCreators } from 'redux';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { addMobileById, getMobiles } from '../../actions/action'
-
-// import { ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toasts';
 import { ToastsStore } from 'react-toasts';
-// ToastsStore.success(`Order placed Successfully with ID: ${orderId}`)
 
 
 const ProductList = (props) => {
     let [mobiles, setMobiles] = useState(props.mobiles);
-    // let [cart, setCart] = useState(props.cart);
-    // console.log("hello")
+    let [pageNumber, setPageNumber] = useState(1)
+
 
     useEffect(() => {
-        // console.log("use effect")
+
         setMobiles(props.mobiles);
     }, [props.mobiles]);
 
-    // useEffect(() => {
-    //     // console.log("use effect")
-    //     setCart(props.cart);
-    //     console.log("cart", props.cart)
-    // }, [props.cart]);
+
 
     const nextPage = (event) => {
 
-        props.getMobiles(event.target.id)
+        let obj = document.getElementById(pageNumber).parentElement
+        obj.classList.remove("disabled")
 
-        // let filtered_mobile = props.mobiles.filter((mob) => {
-        //     return cart.indexOf(mob) === -1;
-        // });
-        // console.log("filtered", filtered_mobile)
-        // setMobiles(filtered_mobile)
+        let id = event.target.id
+
+
+        if (id === "prev") {
+            id = pageNumber - 1
+            props.getMobiles(id)
+            obj = document.getElementById(id).parentElement
+            obj.classList.add("disabled")
+
+        }
+        else if (id === "next") {
+            id = pageNumber + 1
+            props.getMobiles(id)
+            obj = document.getElementById(id).parentElement
+            obj.classList.add("disabled")
+        }
+        else {
+            props.getMobiles(id)
+            obj = document.getElementById(id).parentElement
+            obj.classList.add("disabled")
+
+        }
+
+        obj = document.getElementById("prev").parentElement
+        obj.classList.remove("disabled")
+        obj = document.getElementById("next").parentElement
+        obj.classList.remove("disabled")
+        if (id === "1") {
+            obj = document.getElementById("prev").parentElement
+            obj.classList.add("disabled")
+        }
+        else if (id === "2") {
+            obj = document.getElementById("next").parentElement
+            obj.classList.add("disabled")
+        }
+
+        setPageNumber(id)
+
 
 
     }
     const addToCart = (mobile) => {
-        // console.log(mobile)
         let obj = props.addMobileById(mobile)
-        console.log(obj.mobile)
+
         if (obj) {
             ToastsStore.success("Product added to cart")
-            // toast("Product added to cart");
+
         }
         else {
             ToastsStore.success("Unable to add product")
-            // toast("Unable to add product");
+
+        }
+
+        if (props.mobiles.length === 1) {
+            // nextPage(pageNumber + 1)
+            ToastsStore.success("Go to Next Page for more products")
+            props.getMobiles(pageNumber)
         }
 
 
     }
+
+
     const handleFormChange = (event) => {
         // let { name, value } = event.target 
         let value = event.target.value;
@@ -75,9 +109,8 @@ const ProductList = (props) => {
                 return b.price - a.price;
             });
             setMobiles(sorted)
-            // console.log(sorted)
+
         }
-        // (mobiles)
     }
     let header = (<div className="row navbar navbar-light bg-light">
 
@@ -109,13 +142,17 @@ const ProductList = (props) => {
             <nav aria-label="...">
                 <ul className="pagination pagination-sm">
                     <li className="page-item disabled">
-                        <div className="page-link pointer" id="0" tabIndex="-1">Previous</div>
+                        <div className="page-link pointer" onClick={nextPage} id="prev" >Previous</div>
                     </li>
-                    <li className="page-item"><div className="page-link pointer" onClick={nextPage} id="1">1</div></li>
-                    <li className="page-item"><div className="page-link pointer" onClick={nextPage} id="2">2</div></li>
+                    <li className="page-item disabled">
+                        <div className="page-link pointer" onClick={nextPage} id="1">1</div>
+                    </li>
+                    <li className="page-item">
+                        <div className="page-link pointer" onClick={nextPage} id="2">2</div>
+                    </li>
 
                     <li className="page-item">
-                        <div className="page-link pointer" id="3">Next</div>
+                        <div className="page-link pointer" onClick={nextPage} id="next">Next</div>
                     </li>
                 </ul>
             </nav>
@@ -123,8 +160,6 @@ const ProductList = (props) => {
         <div className="col-sm-4"></div>
     </div>);
     if (mobiles && mobiles.length > 0) {
-
-
         return (
             <div>
                 {header}
@@ -145,12 +180,8 @@ const ProductList = (props) => {
                                             <Link to={{ pathname: `/details/${mobile.id}` }} className="text-white">View</Link></button>
                                         <button className="btn btn-dark" onClick={() => addToCart(mobile)}>Add to Cart</button>
                                     </div>
-
-
-
                                 </div>)
                         })
-
                         }
                     </div>
                     <div className="col-sm-4"></div>
@@ -163,7 +194,7 @@ const ProductList = (props) => {
         return (
             <div>
                 {header}
-                <h1>No Posts Found!</h1>
+                <h1>No Mobile Found! Check Next Page</h1>
                 {footer}
             </div>
         );
@@ -171,6 +202,7 @@ const ProductList = (props) => {
 }
 
 function mapStateToProps(state) {
+
     return { mobiles: state.mobiles }
 }
 

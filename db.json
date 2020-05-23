@@ -56,5 +56,8 @@
       "storage": "256gb"
     }
   ],
-  "login": [{ "id": 1, "username": "anmol", "password": "anmol" }]
+  "login": [
+    { "id": 1, "username": "anmol", "password": "anmol" },
+    { "id": 2, "username": "admin", "password": "admin" }
+  ]
 }

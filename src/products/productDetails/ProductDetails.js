@@ -2,26 +2,16 @@ import { Component } from "react";
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from "react-redux";
-// import { Link } from 'react-router-dom';
 import { addMobileById } from '../../actions/action'
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
 import { ToastsStore } from 'react-toasts';
-// ToastsStore.success(`Order placed Successfully with ID: ${orderId}`)
-// import './productDetails.css'
-// const productDetails = (props) => {
-//     let id = props.match.params.id
-//     console.log(id)
-//     return <div className="text-dark">Product Details!
 
-//     </div>
-// }
+
 
 
 class ProductDetails extends Component {
     state = {
         id: 0,
-        // id: props.match.params.id,
+
         data: []
     };
 
@@ -34,23 +24,25 @@ class ProductDetails extends Component {
     }
 
     addToCart(mobile) {
-        // console.log("props", this.props)
+
         let obj = this.props.dispatch(addMobileById(mobile))
-        console.log(obj.mobile)
+
         if (obj.mobile) {
             ToastsStore.success("Product added to cart")
-            // toast("Product added to cart");
+
         }
         else {
             ToastsStore.success("Unable to add product")
-            // toast("Unable to add product");
+
         }
 
         this.props.history.push('/')
 
-
     }
+
+
     componentDidMount() {
+
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
@@ -130,9 +122,7 @@ class ProductDetails extends Component {
     }
 }
 
-// function mapStateToProps(state) {
-//     return { mobile: state.mobiles }
-// }
+
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({ addMobileById }, dispatch)
@@ -140,5 +130,3 @@ function mapDispatchToProps(dispatch) {
 
 
 export default connect(mapDispatchToProps)(ProductDetails);
-
-// export default ProductDetails

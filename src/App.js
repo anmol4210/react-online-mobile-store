@@ -20,7 +20,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: ""
+      username: localStorage.getItem("username")
     };
   }
 
@@ -31,7 +31,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App mt-1">
         <ToastsContainer store={ToastsStore} position={ToastsContainerPosition.TOP_RIGHT} />
         <LoginContext.Provider value={{ username: this.state, updateValue: this.updateValue }}>
           <Header></Header>

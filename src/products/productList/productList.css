@@ -11,8 +11,8 @@
   font-size: 16px;
   border: none;
   cursor: pointer;
-  min-width: 80px;
-  min-height: 50px;
+  min-width: 60px;
+  min-height: 30px;
 }
 
 .dropdown-content {

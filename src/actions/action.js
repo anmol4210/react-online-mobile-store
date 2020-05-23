@@ -34,12 +34,12 @@ export const getMobiles = (page_number = 0, limit = 3) => {
 };
 
 
-export const mobile = (data) => {
+export const mobile = (mob) => {
     // console.log(data)
     return {
 
         type: GET_MOBILE_BY_ID,
-        data
+        mob
     }
 };
 
@@ -49,7 +49,7 @@ export const getMobileById = (id) => {
         return fetch(url, requestOptions)
             .then(response => response.json())
             .then(data => {
-                // console.log("getting mobile", data)
+                console.log("getting mobile action", data)
                 dispatch(mobile(data))
             })
             .catch(error => {
