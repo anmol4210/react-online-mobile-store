@@ -5,7 +5,7 @@ import { LoginContext } from '../../App'
 import { removeMobileById, removeAllMobiles, getMobiles } from '../../actions/action'
 import { ToastsStore } from 'react-toasts';
 
-const Cart = (props) => {
+export const Cart = (props) => {
 
     const name = useContext(LoginContext)
     var [mobiles, setMobiles] = useState(props.cart);
@@ -29,9 +29,6 @@ const Cart = (props) => {
         inputBox.value = mobile.count
 
     }
-
-
-
 
     const placeOrder = () => {
         props.removeAllMobiles()

@@ -5,17 +5,12 @@ import { connect } from "react-redux";
 import { addMobileById } from '../../../actions/action'
 import { ToastsStore } from 'react-toasts';
 
-
-
-
 class ProductDetails extends Component {
     state = {
         id: 0,
 
         data: []
     };
-
-
 
     constructor(props) {
         super(props);

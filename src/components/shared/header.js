@@ -53,7 +53,6 @@ const Header = () => {
 
             <button className="btn" style={divStyle}>
                 <Link className="text-white" to='/login'>Login</Link>
-
             </button>
         </div>
     }
@@ -65,7 +64,6 @@ const Header = () => {
 
                 <button className="btn float-left ml-2 " style={divStyle} >
                     <Link className="text-white" to={{ pathname: '/' }}>Mobiles</Link>
-
                 </button>
             </div>
             <div className="col-sm-4"></div>

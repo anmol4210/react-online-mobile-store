@@ -37,7 +37,6 @@ class App extends Component {
         <LoginContext.Provider value={{ username: this.state, updateValue: this.updateValue }}>
           <Header></Header>
           <div>
-
             <Switch>
               <Route exact path='/' component={ProductList} />
               <Route exact path='/details/:id' component={ProductDetails} />
@@ -45,8 +44,6 @@ class App extends Component {
               <Route exact path='/login' component={Login} />
               <Route path='**' component={PageNotFound} />
             </Switch>
-
-
           </div>
           <Footer></Footer>
         </LoginContext.Provider>

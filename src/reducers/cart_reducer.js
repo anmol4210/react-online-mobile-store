@@ -29,7 +29,7 @@ function cart(state = [], action) {
             return cart
 
         case DELETE_MOBILE:
-            console.log(action)
+            // console.log(action)
             cart = state.filter(item => item.id !== action.mobile.id)
             return cart
 
