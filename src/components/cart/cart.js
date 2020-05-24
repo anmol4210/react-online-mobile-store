@@ -7,11 +7,27 @@ import { ToastsStore } from 'react-toasts';
 
 export const Cart = (props) => {
 
+    function total(mobiles) {
+        let sum = parseInt(0, 10)
+        for (let index = 0; index < mobiles.length; index++) {
+            if (mobiles[index].count) {
+                sum += (parseInt(mobiles[index].price) * 2)
+            }
+            else {
+                sum += parseInt(mobiles[index].price)
+            }
+        }
+        return sum
+    }
     const name = useContext(LoginContext)
     var [mobiles, setMobiles] = useState(props.cart);
+    let [amount, setAmount] = useState(() => total(mobiles))
+
 
     useEffect(() => {
+
         setMobiles(props.cart);
+
 
     }, [props.cart]);
 
@@ -27,6 +43,7 @@ export const Cart = (props) => {
             mobile.count = 2
         }
         inputBox.value = mobile.count
+        setAmount(amount + parseInt(mobile.price, 10))
 
     }
 
@@ -44,11 +61,19 @@ export const Cart = (props) => {
         placeOrderBtn = <h3>Cart is Empty!</h3>
     }
     else if (name.username.username && (name.username.username !== "")) {
-        placeOrderBtn = <button className="btn btn-dark m-2" onClick={placeOrder}> Place Order</button>
+        placeOrderBtn = (<div>
+            <h4>Total: {amount}</h4>
+            <button className="btn btn-dark m-2" onClick={placeOrder}> Place Order</button>
+
+        </div>)
     }
     else {
-        placeOrderBtn = <h3>Login to place order</h3>
+        placeOrderBtn = (<div>
+            <h3>Login to place order</h3>
+            <h4>Total: {amount}</h4>
+        </div>)
     }
+    // placeOrder.push(<h4>Total: {amount}</h4>)
 
     const decrementCount = (mobile) => {
         let inputBox = document.getElementById(mobile.id)
@@ -62,6 +87,7 @@ export const Cart = (props) => {
 
         }
         inputBox.value = mobile.count
+        setAmount(amount - parseInt(mobile.price, 10))
 
     }
 
@@ -83,8 +109,8 @@ export const Cart = (props) => {
                                     Price: Rs {mobile.price}
                                 </p>
                                 <div className="row">
-                                    <div className="col-sm-3"></div>
-                                    <div className="col-sm-6 input-group">
+                                    <div className="col-sm-2"></div>
+                                    <div className="col-sm-8 input-group">
                                         <div className="input-group-prepend">
                                             <button className="input-group-text" onClick={() => incrementCount(mobile)}>
                                                 <i className="material-icons">add</i>
@@ -98,7 +124,7 @@ export const Cart = (props) => {
                                             </button>
                                         </div>
                                     </div>
-                                    <div className="col-sm-3"></div>
+                                    <div className="col-sm-2"></div>
                                 </div>
                             </div>
                         </div>)
