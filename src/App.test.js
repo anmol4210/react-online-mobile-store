@@ -44,12 +44,4 @@ describe('App', () => {
     expect(app.state().username).toEqual(username);
   })
 
-
-  // it("check update value function", () => {
-  //   let username = "sam"
-  //   app.updateValue("username", username)
-  //   expect(app.state().username).toEqual(username);
-  // })
-
-
 })

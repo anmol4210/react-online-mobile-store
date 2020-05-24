@@ -39,11 +39,8 @@ const Login = (props) => {
     return <div className="text-dark">
 
         <div className="row m-4">
-
             <div className="col-sm-4"></div>
             <div className="col-sm-4">
-
-
                 <form onSubmit={handleSubmit(verifyUser)}>
                     <div className="form-group">
                         <label htmlFor="formGroupExampleInput">Username</label>
@@ -55,8 +52,6 @@ const Login = (props) => {
                     </div>
                     <button type="submit" className="btn btn-dark">Login</button>
                 </form>
-
-
             </div>
             <div className="col-sm-4"></div>
         </div>

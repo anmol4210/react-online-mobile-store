@@ -24,7 +24,7 @@ export const getMobiles = (page_number = 0, limit = 3) => {
         return fetch(url, requestOptions)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 dispatch(allMobiles(data))
             })
             .catch(error => {

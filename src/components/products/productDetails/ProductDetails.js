@@ -58,6 +58,7 @@ class ProductDetails extends Component {
             <div className="row">
 
                 <div className="col-sm-4">
+                    <img className="mt-2" src={process.env.PUBLIC_URL + '/mobile.jpg'} alt="mobile" />
                 </div>
                 <div className="col-sm-4">
                     <ul className="list-group">

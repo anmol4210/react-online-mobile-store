@@ -46,7 +46,7 @@ const ProductList = (props) => {
             obj.classList.add("disabled")
 
         }
-        console.log(id)
+        // console.log(id)
         obj = document.getElementById("prev").parentElement
         obj.classList.remove("disabled")
         obj = document.getElementById("next").parentElement
@@ -68,11 +68,9 @@ const ProductList = (props) => {
 
         if (obj) {
             ToastsStore.success("Product added to cart")
-
         }
         else {
             ToastsStore.success("Unable to add product")
-
         }
 
         if (props.mobiles.length === 1) {
@@ -80,8 +78,6 @@ const ProductList = (props) => {
             ToastsStore.success("Go to Next Page for more products")
             props.getMobiles(pageNumber)
         }
-
-
     }
 
 
@@ -126,8 +122,8 @@ const ProductList = (props) => {
         <div className="dropdown col-sm-2">
             <button className="dropbtn">Sort
                         <div className="dropdown-content">
-                    <p onClick={sort} id="low">Low to High</p>
-                    <p onClick={sort} id="high">High to Low</p>
+                    <p className="m-2" onClick={sort} id="low">Low to High</p>
+                    <p className="m-2" onClick={sort} id="high">High to Low</p>
 
                 </div>
             </button>
@@ -166,13 +162,15 @@ const ProductList = (props) => {
                 {header}
                 <div className="row">
 
-                    <div className="col-sm-4"></div>
-                    <div className="text-dark col-sm-4  m-3">
+                    <div className="col-sm-3"></div>
+                    <div className="text-dark col-sm-5 m-3">
                         {mobiles.map(mobile => {
                             return (
-                                <div className="card m-2 mr-5" key={mobile.id}>
-
-                                    <div className="card-body">
+                                <div className="row border  m-2 p-2 mr-5" key={mobile.id}>
+                                    <div className="col-sm-6">
+                                        <img className="mt-2" src={process.env.PUBLIC_URL + '/mobile.jpg'} alt="mobile" />
+                                    </div>
+                                    <div className="col-sm-6">
                                         <h4 className="card-title">{mobile.name}</h4>
                                         <p className="card-text">
                                             Price: Rs {mobile.price}
