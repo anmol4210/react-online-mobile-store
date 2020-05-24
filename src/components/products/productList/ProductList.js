@@ -131,8 +131,8 @@ const ProductList = (props) => {
     </div>)
 
     let footer = (<div className="row">
-        <div className="col-sm-5"></div>
-        <div className="col-sm-3">
+        <div className="col-sm-4"></div>
+        <div className="col-sm-4">
             <nav aria-label="...">
                 <ul className="pagination pagination-sm">
                     <li className="page-item disabled">
@@ -163,7 +163,7 @@ const ProductList = (props) => {
                 <div className="row">
 
                     <div className="col-sm-3"></div>
-                    <div className="text-dark col-sm-5 m-3">
+                    <div className="text-dark col-sm-6 m-3">
                         {mobiles.map(mobile => {
                             return (
                                 <div className="row border  m-2 p-2 mr-5" key={mobile.id}>
@@ -183,7 +183,7 @@ const ProductList = (props) => {
                         })
                         }
                     </div>
-                    <div className="col-sm-4"></div>
+                    <div className="col-sm-3"></div>
                 </div>
                 {footer}
 
